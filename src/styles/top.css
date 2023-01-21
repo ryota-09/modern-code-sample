@@ -2,3 +2,47 @@ body {
   margin: 0;
   background-color: #eeeeee;
 }
+img {
+  display: block;
+}
+.header {
+  height: 112px;
+  background-color: #ffffff;
+}
+/* 上部固定のヘッダーの場合 */
+/* 
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+*/
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  /* display: grid;
+  grid-auto-flow: column; */
+  align-items: center;
+  height: 100%;
+}
+.w-container {
+  /* 比較関数 92%の算出値が1166pxより小さい場合、92%が適用.大きい場合1166px */
+  /* width:92%;max-width: 1166px; margin:auto;　と同じ */
+  width: min(92%, 1166px);
+  margin: auto;
+}
+/* gridの２番目に配置 */
+/* 
+.grid > * {
+  grid-column: 2;
+} 
+*/
+.navbtn {
+  padding: 0;
+  outline: none;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: #aaaaaa;
+  font-size: 30px;
+}
