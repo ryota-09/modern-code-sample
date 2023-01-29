@@ -1,15 +1,5 @@
 import { FC } from "react";
 
-type Props<T> = {
-  data: T
-}
-
-const MyComponent = <T extends string>({data}: Props<T>) => {
-  return <div>{data}</div>
-}
-
-<MyComponent<string> data="Data" /> 
-
 const Hero: FC = () => {
   return (
     <section className="hero">

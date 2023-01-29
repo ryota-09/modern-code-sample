@@ -4,6 +4,8 @@ body {
 }
 img {
   display: block;
+  max-width: 100%;
+  height: auto;
 }
 
 h1,
@@ -12,7 +14,8 @@ h3,
 h4,
 h5,
 h6,
-p {
+p,
+figure {
   margin: 0;
 }
 
@@ -109,4 +112,61 @@ a:hover {
   font-size: 18px;
   text-align: center;
   text-shadow: 0 0 6px #01010152;
+}
+
+.imgtext {
+  padding: clamp(90px, 9vw, 120px);
+  background-color: #ffffff;
+}
+
+.imgtext + .imgtext {
+  padding-top: 0;
+}
+
+.heading-decoration {
+  font-size: clamp(30px, 3vw, 40px);
+  min-height: 0vw;
+  font-weight: 400;
+}
+
+.heading-decoration::after {
+  display: block;
+  content: "";
+  width: 160px;
+  height: 0px;
+  border-top: solid 1px #b72661;
+  margin-top: 0.6em;
+}
+
+.heading-decoration + p {
+  margin-top: 1em;
+  margin-bottom: 2em;
+  color: #707070;
+  font-family: "Montserrat", sans-serif;
+  font-size: 18px;
+}
+
+.imgtext-container {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(90px, 9vw, 120px);
+}
+/* 768px以上の時適用されるものを書く */
+@media (min-width: 768px) {
+  .imgtext-container {
+    flex-direction: row;
+    align-items: center;
+  }
+  .imgtext .reverse {
+    flex-direction: row-reverse;
+  }
+  /* テキスト:画像　ーー＞ 1:2 */
+  .imgtext-container > .text {
+    flex: 1;
+    /* 最小幅は17文字ぶんにする */
+    min-width: 17em;
+  }
+  .imgtext-container > .img {
+    flex: 2;
+  }
 }
