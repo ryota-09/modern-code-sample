@@ -1,3 +1,10 @@
+@charset "UTF-8";
+
+:root {
+  /* 変数管理 */
+  --v-space: clamp(90px, 9px, 120px);
+}
+
 body {
   margin: 0;
   background-color: #eeeeee;
@@ -15,8 +22,11 @@ h4,
 h5,
 h6,
 p,
-figure {
+figure,
+ul {
   margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 a {
@@ -53,6 +63,7 @@ a:hover {
   /* width:92%;max-width: 1166px; margin:auto;　と同じ */
   width: min(92%, 1166px);
   margin: auto;
+  position: relative;
 }
 /* gridの２番目に配置 */
 /* 
@@ -115,7 +126,7 @@ a:hover {
 }
 
 .imgtext {
-  padding: clamp(90px, 9vw, 120px);
+  padding: var(--v-space) 0;
   background-color: #ffffff;
 }
 
@@ -144,6 +155,98 @@ a:hover {
   color: #707070;
   font-family: "Montserrat", sans-serif;
   font-size: 18px;
+}
+
+.posts {
+  padding: var(--v-space) 0;
+  background-color: #f3f1ed;
+}
+
+.posts-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  /* これでも良い */
+  /* grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); */
+  gap: 32px 25px;
+}
+@media (min-width: 768px) {
+  .posts-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.post img {
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  /* CMSでwidth未設定の場合があるため */
+  width: 100%;
+}
+/* カッコ内がサポートしてなかった場合、割り当てるものを入れる。 */
+@supports not (aspect-ratio: 3 / 2) {
+  .post img {
+    height: 180px;
+  }
+}
+.post a {
+  /* これがないと:hoverが反映しない。 */
+  display: block;
+}
+.post h3 {
+  margin: 1em 0 0.5em;
+  font-size: clamp(12px, 2vw, 20px);
+  min-height: 0vw;
+}
+
+.heading {
+  position: absolute;
+  top: calc((var(--v-space) + 0.6em) * -1);
+  font-family: "Montserrat", sans-serif;
+  font-size: calmp(40px, 5.2vw, 70px);
+  min-height: 0vw;
+  font-size: 300;
+}
+
+.heading span {
+  display: block;
+  color: #666666;
+  font-size: 18px;
+}
+
+.footer {
+  padding: 70px 0;
+  background-color: #ffffff;
+  color: #707070;
+  font-size: 13px;
+}
+
+.footer-container {
+  display: grid;
+  gap: 50px;
+  justify-items: center;
+}
+
+.footer-sns {
+  display: flex;
+  gap: 24px;
+  font-size: 24px;
+}
+
+.footer-sns a {
+  display: grid;
+  /* item一つの時は便利 */
+  place-items: center;
+  width: 36px;
+  aspect-ratio: 1/1;
+  background-color: #cccccc;
+  color: #ffffff;
+  clip-path: circle(50%);
+}
+
+.footer-menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
 }
 
 .imgtext-container {
